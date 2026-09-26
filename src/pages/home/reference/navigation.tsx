@@ -7,11 +7,11 @@ const links = [
   ["Why dotpbo", "#why"], ["FAQ", "#faq"], ["Contact", "#contact"],
 ]
 
-export function Brand() {
-  return <a href="#home" aria-label="dotpbo home" className="flex items-center gap-3 font-headline-sm text-2xl font-semibold tracking-tight"><span aria-hidden="true" className="grid h-8 w-8 place-items-center rounded-lg border border-primary-container/50 bg-primary-container/10 text-primary-container">d</span><span>dotpbo<span className="text-primary-container">.</span></span></a>
+export function Brand({ href = "#home" }: { href?: string }) {
+  return <a href={href} aria-label="dotpbo home" className="flex items-center gap-3 font-headline-sm text-2xl font-semibold tracking-tight"><span aria-hidden="true" className="grid h-8 w-8 place-items-center rounded-lg border border-primary-container/50 bg-primary-container/10 text-primary-container">d</span><span>dotpbo<span className="text-primary-container">.</span></span></a>
 }
 
-export default function Navigation() {
+export default function Navigation({ activePage = "home" }: { activePage?: "home" | "about" }) {
   const [open, setOpen] = useState(false)
   const toggle = useRef<HTMLButtonElement>(null)
   useEffect(() => {
@@ -22,13 +22,17 @@ export default function Navigation() {
     window.addEventListener("keydown", close)
     return () => window.removeEventListener("keydown", close)
   }, [open])
-  const items = links.map(([label, href]) => href === "/about-us"
-    ? <Link key={label} to="/about-us" onClick={() => setOpen(false)} className="rounded-xl px-3 py-2 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface">{label}</Link>
-    : <a key={label} href={href} onClick={() => setOpen(false)} aria-current={label === "Home" ? "page" : undefined} className={`rounded-xl px-3 py-2 hover:bg-surface-container-high hover:text-on-surface ${label === "Home" ? "bg-surface-container-high font-semibold" : "text-on-surface-variant"}`}>{label}</a>)
+  const items = links.map(([label, href]) => {
+    const active = label.toLowerCase() === activePage
+    const className = `rounded-xl px-3 py-2 hover:bg-surface-container-high hover:text-on-surface ${active ? (activePage === "about" ? "font-semibold text-primary underline decoration-primary-container underline-offset-8" : "bg-surface-container-high font-semibold") : "text-on-surface-variant"}`
+    if (href === "/about-us") return <Link key={label} to="/about-us" aria-current={active ? "page" : undefined} onClick={() => setOpen(false)} className={className}>{label}</Link>
+    const target = activePage === "about" && label !== "Contact" ? `/${href}` : href
+    return <a key={label} href={target} onClick={() => setOpen(false)} aria-current={active ? "page" : undefined} className={className}>{label}</a>
+  })
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-surface-container-lowest/95 backdrop-blur-md">
       <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between gap-4 px-margin-mobile lg:px-margin">
-        <Brand />
+        <Brand href={activePage === "about" ? "/" : "#home"} />
         <nav aria-label="Main navigation" className="hidden items-center gap-1 text-label-md xl:flex">{items}</nav>
         <div className="flex items-center gap-3">
           <a href="#contact" className="hidden rounded-xl bg-primary-container px-5 py-2.5 font-semibold text-on-primary-container shadow-[0_0_20px_#ff7a2140] transition hover:bg-tertiary-container sm:inline-flex">Let’s Talk →</a>

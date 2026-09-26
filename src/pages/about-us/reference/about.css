@@ -1,0 +1,36 @@
+.reference-about .rounded-lg { border-radius: 0.25rem; }
+.reference-about .rounded-xl { border-radius: 0.5rem; }
+.reference-about section { position: relative; }
+.reference-about section > div { min-width: 0; }
+.reference-about #about-process .text-label-sm { flex-wrap: wrap; gap: 0.5rem; }
+.reference-about #about-partnership .justify-between { flex-wrap: wrap; gap: 0.75rem; }
+.reference-about .w-6 { flex-shrink: 0; }
+.reference-about .about-hero {
+  background: radial-gradient(ellipse at 85% 45%, #ff7a210b, transparent 60%);
+}
+.reference-about #about-hero .about-hero-title {
+  font-size: clamp(2.4rem, 4.5vw, 4.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+.about-hero-orbit {
+  position: absolute;
+  inset: -28px -20px 12px;
+  border: 1px solid #ff7a2118;
+  border-radius: 50%;
+  transform: rotate(-12deg);
+  pointer-events: none;
+}
+.about-hero-orbit::after {
+  content: "";
+  position: absolute;
+  inset: 20px -12px;
+  border: 1px dashed #ff7a2118;
+  border-radius: 50%;
+  transform: rotate(24deg);
+}
+@media (max-width: 639px) {
+  .reference-about h1 { font-size: clamp(2rem, 8.8vw, 2.75rem); line-height: 1.16; }
+  .reference-about #about-hero .justify-between { flex-wrap: wrap; gap: 0.5rem; }
+}
