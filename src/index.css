@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./pages/home/reference/theme.css";
 
 @theme {
   --color-brand-50: #fff8f2;
@@ -17,7 +18,11 @@ html {
 body {
   background: var(--color-brand-50);
   font-family: "Plus Jakarta Sans", "Manrope", sans-serif;
+  color: #1e293b;
+  text-rendering: optimizeLegibility;
 }
+
+::selection { background: var(--color-brand-100); color: #1e293b; }
 
 section[id] {
   scroll-margin-top: 88px;
@@ -78,4 +83,9 @@ section[id] {
 
 .animate-fade-up {
   animation: fade-up 0.9s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-float-y, .animate-float-y2, .animate-pulse-glow, .animate-fade-up { animation: none; }
 }

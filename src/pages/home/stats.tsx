@@ -31,22 +31,20 @@ function AnimatedStat({ target, suffix, label }: Stat) {
   }, [target])
 
   return (
-    <div ref={ref} className="text-center text-white">
-      <div className="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-full bg-white/15 p-1.5">
-        <div className="flex h-full w-full items-center justify-center rounded-full bg-brand-600 text-lg font-extrabold">
+    <div ref={ref} className="border-white/15 px-4 text-center text-white lg:border-r lg:last:border-r-0">
+      <div className="mb-2 text-3xl font-extrabold tracking-[-.04em] sm:text-4xl">
           {value}
           {suffix}
-        </div>
       </div>
-      <div className="text-[13px] font-semibold text-white/90">{label}</div>
+      <div className="text-[11px] font-semibold tracking-wide text-white/75">{label}</div>
     </div>
   )
 }
 
 export default function Stats() {
   return (
-    <section className="bg-gradient-to-br from-brand-400 via-brand-500 to-brand-600 px-6 py-24 lg:px-10">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-6">
+    <section className="bg-gradient-to-br from-brand-400 via-brand-500 to-brand-600 px-6 py-16 lg:px-10">
+      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-y-10 sm:grid-cols-3 lg:grid-cols-6 lg:gap-y-0">
         {stats.map((s) => (
           <AnimatedStat key={s.label} {...s} />
         ))}

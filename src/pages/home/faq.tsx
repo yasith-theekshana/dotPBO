@@ -5,13 +5,13 @@ export default function Faq() {
   const [open, setOpen] = useState(0)
 
   return (
-    <section id="faq" className="mx-auto max-w-3xl px-6 py-28 lg:px-10">
-      <div className="mx-auto mb-14 max-w-xl text-center">
-        <div className="mb-3.5 text-xs font-bold tracking-[2px] text-brand-500">FAQ</div>
-        <h2 className="text-3xl font-extrabold tracking-tight text-slate-800">Common questions</h2>
+    <section id="faq" className="mx-auto grid max-w-7xl gap-12 px-6 py-24 lg:grid-cols-[.7fr_1.3fr] lg:px-10 lg:py-32">
+      <div className="max-w-xl">
+        <div className="mb-4 text-[11px] font-bold tracking-[.18em] text-brand-500">FAQ</div>
+        <h2 className="text-3xl font-extrabold tracking-[-.03em] text-slate-800 sm:text-[42px]">Common questions</h2>
       </div>
 
-      <div>
+      <div className="border-t border-slate-800/10">
         {faqs.map((faq, i) => {
           const isOpen = open === i
           return (
@@ -19,7 +19,7 @@ export default function Faq() {
               key={faq.q}
               type="button"
               onClick={() => setOpen(isOpen ? -1 : i)}
-              className="block w-full border-b border-slate-800/10 py-5 text-left"
+              className="block w-full border-b border-slate-800/10 py-6 text-left"
             >
               <div className="flex items-center justify-between gap-4">
                 <span className="text-base font-bold text-slate-800">{faq.q}</span>

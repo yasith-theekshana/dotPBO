@@ -3,30 +3,33 @@ import { services } from "../../data/services"
 
 export default function Services() {
   return (
-    <section id="services" className="bg-white px-6 py-28 lg:px-10">
+    <section id="services" className="bg-white px-6 py-24 lg:px-10 lg:py-32">
       <div className="mx-auto max-w-7xl">
-        <div className="mx-auto mb-16 max-w-2xl text-center">
-          <div className="mb-3.5 text-xs font-bold tracking-[2px] text-brand-500">SERVICES</div>
-          <h2 className="mb-5 text-3xl font-extrabold tracking-tight text-slate-800 sm:text-[40px]">
+        <div className="mb-14 flex flex-col justify-between gap-6 border-b border-slate-800/10 pb-10 md:flex-row md:items-end">
+          <div>
+          <div className="mb-4 text-[11px] font-bold tracking-[.18em] text-brand-500">SERVICES</div>
+          <h2 className="text-3xl font-extrabold tracking-[-.03em] text-slate-800 sm:text-[42px]">
             A full outsourced finance function
           </h2>
-          <p className="text-base leading-relaxed text-slate-500">
+          </div>
+          <p className="max-w-lg text-[15px] leading-7 text-slate-500">
             Pick a single service or hand us the entire back office — every engagement is
             delivered by dedicated, senior-reviewed teams.
           </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((svc) => (
+        <div className="grid overflow-hidden rounded-2xl border border-slate-800/10 bg-slate-800/10 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map((svc, index) => (
             <div
               key={svc.id}
-              className="group rounded-[20px] border border-brand-500/15 bg-brand-50 p-8 transition duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-brand-500/20"
+              className="group relative bg-white p-8 transition duration-300 hover:z-10 hover:bg-brand-50"
             >
-              <div className="mb-5 flex h-[52px] w-[52px] items-center justify-center rounded-2xl bg-gradient-to-br from-brand-400 to-brand-600 text-sm font-extrabold text-white">
+              <div className="absolute right-7 top-7 text-xs font-bold text-slate-800/20">0{index + 1}</div>
+              <div className="mb-7 flex h-11 w-11 items-center justify-center rounded-xl bg-brand-100 text-xs font-extrabold text-brand-600 transition group-hover:bg-gradient-to-br group-hover:from-brand-400 group-hover:to-brand-600 group-hover:text-white">
                 {svc.glyph}
               </div>
               <div className="mb-2.5 text-lg font-bold text-slate-800">{svc.title}</div>
-              <p className="mb-5 min-h-[66px] text-sm leading-relaxed text-slate-500">{svc.shortDesc}</p>
+              <p className="mb-7 min-h-[66px] text-sm leading-6 text-slate-500">{svc.shortDesc}</p>
               <Link
                 to="/services/$serviceId"
                 params={{ serviceId: svc.id }}
