@@ -1,0 +1,35 @@
+.reference-about .rounded-lg { border-radius: 0.25rem; }
+.reference-about .rounded-xl { border-radius: 0.5rem; }
+.reference-about section { position: relative; }
+.reference-about section > div { min-width: 0; }
+.reference-about #about-process .text-label-sm { flex-wrap: wrap; gap: 0.5rem; }
+.reference-about #about-partnership .justify-between { flex-wrap: wrap; gap: 0.75rem; }
+.reference-about .w-6 { flex-shrink: 0; }
+.reference-about .about-hero {
+  background: radial-gradient(ellipse at 50% 70%, #ff7a2110, transparent 65%);
+}
+.reference-about #about-hero .about-hero-title {
+  font-size: clamp(2.3rem, 5.2vw, 4.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+.about-partnership-graphic {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.about-graphic-flow { animation: about-flow 16s linear infinite; }
+@keyframes about-flow { to { stroke-dashoffset: -176; } }
+@media (max-width: 639px) {
+  .about-partnership-graphic { width: 140%; max-width: none; margin-left: -20%; }
+  .about-partnership-graphic text { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-graphic-flow { animation: none; }
+}
+@media (max-width: 639px) {
+  .reference-about h1 { font-size: clamp(2rem, 8.8vw, 2.75rem); line-height: 1.16; }
+  .reference-about #about-hero .justify-between { flex-wrap: wrap; gap: 0.5rem; }
+}
