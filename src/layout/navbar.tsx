@@ -2,12 +2,12 @@ import { useEffect, useState } from "react"
 import { Link } from "@tanstack/react-router"
 
 const navLinks = [
-  { label: "About", hash: "about" },
-  { label: "Services", hash: "services" },
-  { label: "Industries", hash: "industries" },
-  { label: "Technology", hash: "technology" },
-  { label: "Why Choose Us", hash: "why" },
-  { label: "Contact", hash: "contact" },
+  { label: "About", to: "/about-us" } as const,
+  { label: "Services", to: "/", hash: "services" } as const,
+  { label: "Industries", to: "/", hash: "industries" } as const,
+  { label: "Technology", to: "/", hash: "technology" } as const,
+  { label: "Why Choose Us", to: "/", hash: "why" } as const,
+  { label: "Contact", to: "/", hash: "contact" } as const,
 ]
 
 export default function Navbar() {
@@ -44,8 +44,8 @@ export default function Navbar() {
           {navLinks.map((link) => (
             <Link
               key={link.label}
-              to="/"
-              hash={link.hash}
+              to={link.to}
+              hash={"hash" in link ? link.hash : undefined}
               className="text-sm font-semibold text-slate-700 transition hover:text-brand-500"
             >
               {link.label}
@@ -76,8 +76,8 @@ export default function Navbar() {
           {navLinks.map((link) => (
             <Link
               key={link.label}
-              to="/"
-              hash={link.hash}
+              to={link.to}
+              hash={"hash" in link ? link.hash : undefined}
               onClick={() => setMenuOpen(false)}
               className="rounded-lg px-2 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-brand-50 hover:text-brand-600"
             >

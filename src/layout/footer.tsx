@@ -23,7 +23,7 @@ export default function Footer() {
         <div>
           <div className="mb-4 text-xs font-bold tracking-wide text-white/90">QUICK LINKS</div>
           <div className="flex flex-col gap-2.5 text-sm text-white/65">
-            <Link to="/" hash="about" className="transition hover:text-white">
+            <Link to="/about-us" className="transition hover:text-white">
               About
             </Link>
             <Link to="/" hash="industries" className="transition hover:text-white">
