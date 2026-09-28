@@ -1,0 +1,12 @@
+.reference-services .service-card[hidden] { display: none; }
+.reference-services .rounded-lg { border-radius: 0.25rem; }
+.reference-services .rounded-xl { border-radius: 0.5rem; }
+.reference-services #service-filters { scrollbar-width: thin; scrollbar-color: #a78b7d #231a13; }
+.reference-services #service-filters button { cursor: pointer; min-height: 44px; }
+.reference-services .service-card { min-width: 0; }
+.reference-services #services-hero .flex.items-center.justify-between { flex-wrap: wrap; gap: 0.75rem; }
+.reference-services .service-card > div > .flex.items-center.justify-between { flex-wrap: wrap; gap: 0.5rem; }
+@media (max-width: 639px) {
+  .reference-services .service-card { padding: 1.5rem; }
+  .reference-services #contact > div > div { padding: 2rem 1.25rem; }
+}

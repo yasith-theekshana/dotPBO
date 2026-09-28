@@ -4,7 +4,7 @@ import Footer from "./footer"
 
 export default function RootLayout() {
   const hasOwnLayout = useRouterState({
-    select: (state) => ["/", "/about-us"].includes(state.location.pathname.replace(/\/$/, "") || "/"),
+    select: (state) => ["/", "/about-us", "/services"].includes(state.location.pathname.replace(/\/$/, "") || "/"),
   })
   if (hasOwnLayout) return <Outlet />
   return (
